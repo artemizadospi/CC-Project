@@ -311,15 +311,15 @@ public class NewsController {
             System.out.println("Response code: " + response.statusCode());
             System.out.println("Response body: " + response.body());
 
-            request = HttpRequest.newBuilder()
-                    .uri(URI.create("http://localhost:8081/news/count"))
-                    .GET()
-                    .build();
-
-            response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-            long count = objectMapper.readValue(response.body(), long.class);
-            System.out.println("Response code: " + response.statusCode());
-            System.out.println("Response body: " + response.body());
+//            request = HttpRequest.newBuilder()
+//                    .uri(URI.create("http://localhost:8081/news/count"))
+//                    .GET()
+//                    .build();
+//
+//            response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            long count = 0;
+//            System.out.println("Response code: " + response.statusCode());
+//            System.out.println("Response body: " + response.body());
 
             return new ResponseNewsDTO(createdNews.getId(), createdNews.getPublisher().getLastName() + " " +
                     createdNews.getPublisher().getFirstName(), createdNews.getPublishDate(),
