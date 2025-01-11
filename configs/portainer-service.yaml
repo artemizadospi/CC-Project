@@ -4,6 +4,7 @@ metadata:
   labels:
     app: portainer
   name: portainer
+  namespace: default
 spec:
   type: NodePort
   ports:

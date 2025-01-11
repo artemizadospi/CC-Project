@@ -4,6 +4,7 @@ metadata:
   labels:
     app: postgresdb
   name: postgresdb
+  namespace: default
 spec:
   ports:
     - name: "5432"

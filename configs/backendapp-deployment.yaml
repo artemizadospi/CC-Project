@@ -4,6 +4,7 @@ metadata:
   labels:
     app: backendapp
   name: backendapp
+  namespace: default
 spec:
   replicas: 1
   selector:

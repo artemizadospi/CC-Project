@@ -4,6 +4,7 @@ metadata:
   labels:
     app: pgadmin4-data
   name: pgadmin4-data
+  namespace: default
 spec:
   accessModes:
     - ReadWriteOnce

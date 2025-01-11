@@ -4,6 +4,7 @@ metadata:
   labels:
     app: pgadmin4
   name: pgadmin4
+  namespace: default
 spec:
   type: NodePort
   ports:

@@ -4,6 +4,7 @@ metadata:
   labels:
     app: portainer-data
   name: portainer-data
+  namespace: default
 spec:
   accessModes:
     - ReadWriteOnce
