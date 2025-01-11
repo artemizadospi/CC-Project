@@ -5,5 +5,15 @@ nodes:
   extraPortMappings:
   - containerPort: 30000
     hostPort: 30000
+  - containerPort: 32000
+    hostPort: 32000
+    protocol: TCP
+  - containerPort: 32001
+    hostPort: 32001
+    protocol: TCP
+  - containerPort: 32002
+    hostPort: 32002
+    protocol: TCP
 - role: worker
 - role: worker
+

@@ -1,0 +1,46 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: portainer-cluster-role
+rules:
+  - apiGroups: ["storage.k8s.io"]
+    resources:
+      - "storageclasses"
+    verbs:
+      - "get"
+      - "list"
+      - "watch"
+  - apiGroups: [""]
+    resources:
+      - "namespaces"
+      - "pods"
+      - "services"
+      - "nodes"
+      - "secrets"
+      - "configmaps"
+      - "persistentvolumes"
+      - "persistentvolumeclaims"
+    verbs:
+      - "get"
+      - "list"
+      - "watch"
+  - apiGroups: ["apps"]
+    resources:
+      - "deployments"
+      - "statefulsets"
+      - "replicasets"
+      - "daemonsets"
+    verbs:
+      - "get"
+      - "list"
+      - "watch"
+  - apiGroups: ["rbac.authorization.k8s.io"]
+    resources:
+      - "roles"
+      - "rolebindings"
+      - "clusterroles"
+      - "clusterrolebindings"
+    verbs:
+      - "get"
+      - "list"
+      - "watch"
