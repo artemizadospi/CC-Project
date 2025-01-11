@@ -14,10 +14,13 @@ spec:
         app: authenticationapp
     spec:
       containers:
-        - image: artemizadospinescu/authentication_image
-          name: authenticationapp
+        - name: authenticationapp
+          image: alexandraion226/cloud-authentication-image
+          env:
+            - name: DATABASE_INTREACTION_URL
+              value: http://dbinteraction.default.svc.cluster.local:8081/
           ports:
-            - containerPort: 8082
+            - containerPort: 8082                      # Expose the port
               protocol: TCP
       hostname: authenticationapp
       restartPolicy: Always
