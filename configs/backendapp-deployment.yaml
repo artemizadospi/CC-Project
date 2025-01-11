@@ -16,8 +16,11 @@ spec:
         app: backendapp
     spec:
       containers:
-        - image: artemizadospinescu/backend_image
+        - image: alexandraion226/cloud-bussiness-logic-image
           name: backendapp
+          env:
+            - name: DATABASE_INTREACTION_URL
+              value: http://dbinteraction.default.svc.cluster.local:8081/
           ports:
             - containerPort: 8083
               protocol: TCP
