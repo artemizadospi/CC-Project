@@ -1,67 +1,8 @@
-# Kubernetes Provider Configuration
 provider "kubernetes" {
-  config_path = "~/.kube/config"  # Adjust the path if your kubeconfig is elsewhere
+  config_path = "~/.kube/config"
 }
 
-# Kubernetes Deployment for Authentication App
-resource "kubernetes_deployment" "authenticationapp" {
-  metadata {
-    name = "authenticationapp"
-  }
-
-  spec {
-    replicas = 1
-
-    selector {
-      match_labels = {
-        app = "authenticationapp"
-      }
-    }
-
-    template {
-      metadata {
-        labels = {
-          app = "authenticationapp"
-        }
-      }
-
-      spec {
-        container {
-          name  = "authenticationapp"
-          image = "artemizadospinescu/authentication_image"  # Replace with your image
-          ports {
-            container_port = 8082
-            protocol       = "TCP"
-          }
-        }
-
-        hostname      = "authenticationapp"
-        restart_policy = "Always"
-      }
-    }
-  }
-}
-
-# Kubernetes Service for Authentication App (NodePort)
-resource "kubernetes_service" "authenticationapp" {
-  metadata {
-    name = "authenticationapp"
-    labels = {
-      app = "authenticationapp"
-    }
-  }
-
-  spec {
-    selector = {
-      app = "authenticationapp"
-    }
-
-    ports {
-      port        = 8082
-      target_port = 8082
-      node_port   = 32000
-    }
-
-    type = "NodePort"
-  }
+resource "kubernetes_manifest" "all_resources" {
+  for_each = { for file in fileset("${path.module}", "*.yaml") : file => file if file != "kind-config-three-nodes.yaml" }
+  manifest = yamldecode(file(each.value))
 }
