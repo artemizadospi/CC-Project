@@ -26,4 +26,6 @@ for service in $services; do
   fi
 done
 
+kubectl delete pvc --all --all-namespaces
+
 echo "All specified deployments and services have been deleted."

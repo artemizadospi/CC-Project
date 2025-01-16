@@ -12,6 +12,10 @@ spec:
     metadata:
       labels:
         app: authenticationapp
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/metrics"
+        prometheus.io/port: "9090"
     spec:
       containers:
         - name: authenticationapp
@@ -20,7 +24,8 @@ spec:
             - name: DATABASE_INTREACTION_URL
               value: http://dbinteraction.default.svc.cluster.local:8081/
           ports:
-            - containerPort: 8082                      # Expose the port
+            - containerPort: 8082   
+            - containerPort: 9090
               protocol: TCP
       hostname: authenticationapp
       restartPolicy: Always
